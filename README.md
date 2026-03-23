@@ -4,7 +4,7 @@ A personal sticky notes web application built with Django.
 ## Setup Instructions
 
 ### 1. Clone the repository
-git clone <your-repo-link>
+git clone <https://github.com/rohailk6/RohailNawaz_22P9367_Sticky_Notes.git>
 cd sticky_notes
 
 ### 2. Install dependencies
