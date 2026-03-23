@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+    <h2>My Notes</h2>
+    <a href="/notes/new/" class="btn btn-primary">+ New Note</a>
+</div>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px;">
+    {% for note in notes %}
+    <div style="
+        background: {{ note.color }};
+        width: 230px;
+        min-height: 180px;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+        position: relative;
+        word-wrap: break-word;
+    ">
+        <h3 style="margin-bottom:8px; font-size:16px;">{{ note.title }}</h3>
+        <p style="font-size:14px; color:#333;">{{ note.content }}</p>
+        <div style="position:absolute; bottom:10px; right:10px; display:flex; gap:6px;">
+            <a href="/notes/{{ note.pk }}/edit/"   class="btn btn-secondary" style="font-size:12px; padding:5px 10px;">Edit</a>
+            <a href="/notes/{{ note.pk }}/delete/" class="btn btn-danger"    style="font-size:12px; padding:5px 10px;">Delete</a>
+        </div>
+        <p style="font-size:11px; color:#666; margin-top:30px;">{{ note.updated_at|date:"M d, Y" }}</p>
+    </div>
+    {% empty %}
+    <div style="text-align:center; width:100%; margin-top:60px;">
+        <p style="font-size:18px; color:#888;">No notes yet!</p>
+        <a href="/notes/new/" class="btn btn-primary" style="margin-top:12px;">Create your first note</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
